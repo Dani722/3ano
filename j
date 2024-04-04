@@ -19,6 +19,7 @@ def mostrarListaAtual(lista):
 
 def gravarLista(lista):
     arquivo = input("Digite o nome do arquivo a ser gravado: ")
+    arquivo += ".txt" 
     try:
         with open(arquivo, 'w') as f:
             f.write(str(lista))
@@ -26,11 +27,12 @@ def gravarLista(lista):
     except Exception as e:
         print("Erro ao gravar o arquivo:", e)
 
-def lerArquivoLista(extensao = "txt"):
+def lerArquivoLista(extensao=".txt"):
     arquivos = os.listdir()
-    print("Lista de Arquivos disponíveis:")
+    print(f"arquivo .{extensao}Lista de Arquivos disponíveis:")
     for arquivo in arquivos:
-        print(arquivo)
+        if arquivo.endswith(extensao):
+            print(arquivo)
     arquivoEscolhido = input("Digite o nome do arquivo para ler: ")
     try:
         with open(arquivoEscolhido, 'r') as f:
